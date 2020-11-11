@@ -24,6 +24,7 @@ public class MainFrame extends javax.swing.JFrame {
         this.setResizable(false);
         convertToBlackAndWhiteJButton.setVisible(false);
         setThresholdJButton.setVisible(false);
+        thresholdJLabel.setVisible(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -36,6 +37,7 @@ public class MainFrame extends javax.swing.JFrame {
         tittleJLabel = new javax.swing.JLabel();
         initialMessageJLabel = new javax.swing.JLabel();
         setThresholdJButton = new javax.swing.JButton();
+        thresholdJLabel = new javax.swing.JLabel();
         mainFrameJMenuBar = new javax.swing.JMenuBar();
         fileJMenu = new javax.swing.JMenu();
         openImageJMenuItem = new javax.swing.JMenuItem();
@@ -81,6 +83,8 @@ public class MainFrame extends javax.swing.JFrame {
                 setThresholdJButtonActionPerformed(evt);
             }
         });
+
+        thresholdJLabel.setText("Threshold: 128");
 
         fileJMenu.setMnemonic('F');
         fileJMenu.setText("File");
@@ -137,7 +141,10 @@ public class MainFrame extends javax.swing.JFrame {
                         .addComponent(setThresholdJButton))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(132, 132, 132)
-                        .addComponent(convertToBlackAndWhiteJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(convertToBlackAndWhiteJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(209, 209, 209)
+                        .addComponent(thresholdJLabel)))
                 .addContainerGap(134, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -149,7 +156,9 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(canvas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(68, 68, 68)
                 .addComponent(initialMessageJLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(thresholdJLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(setThresholdJButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(convertToBlackAndWhiteJButton)
@@ -181,6 +190,7 @@ public class MainFrame extends javax.swing.JFrame {
                 initialMessageJLabel.setVisible(false);
                 convertToBlackAndWhiteJButton.setVisible(true);
                 setThresholdJButton.setVisible(true);
+                thresholdJLabel.setVisible(true);
                 repaint();
 
             } else {
@@ -199,7 +209,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_convertToBlackAndWhiteJButtonActionPerformed
 
     private void setThresholdJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setThresholdJButtonActionPerformed
-        String res = JOptionPane.showInputDialog(rootPane,"Introduce a threshold value between 0 and 255", "Set Threshold");
+        String res = JOptionPane.showInputDialog(rootPane,"Introduce a threshold value between 0 and 255");
         if (res != null) {
             int value = 0;
             try {
@@ -213,6 +223,7 @@ public class MainFrame extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, "The threshold value must be between 0 and 255!");
             }else{
                 canvas.setThreshold(Integer.parseInt(res));
+                thresholdJLabel.setText("Threshold: " + res);
             }
             
         }
@@ -233,6 +244,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem openImageJMenuItem;
     private javax.swing.JMenuItem saveImageJMenuItem;
     private javax.swing.JButton setThresholdJButton;
+    private javax.swing.JLabel thresholdJLabel;
     private javax.swing.JLabel tittleJLabel;
     // End of variables declaration//GEN-END:variables
 

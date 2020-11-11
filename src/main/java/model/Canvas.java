@@ -38,6 +38,15 @@ public class Canvas extends JPanel {
         }
         return true;
     }
+    public boolean saveImage(String path, String format){
+        try {
+            ImageIO.write(image, format , new File(path + "."+ format));
+            return true;
+        } catch (IOException ex) {
+            Logger.getLogger(Canvas.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
 
     public BufferedImage getImage() {
         return image;
